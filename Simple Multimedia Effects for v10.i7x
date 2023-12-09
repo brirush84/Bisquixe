@@ -1,4 +1,4 @@
-Simple Multimedia Effects for v10 by Mathbrush begins here.
+Version 2 of Simple Multimedia Effects for v10 by Mathbrush begins here.
 
 [Significant chunks of code were first written by Petter Sjölund.]
 
@@ -89,20 +89,20 @@ Global style_counter = 11;
 The echoed already variable translates into I6 as "echoed_already".
 
 When play begins:
-[	set echo line events off;]
+	set echo line events off;
 	request glulx hyperlink event in main window;
 	request glulx hyperlink event in status window.
 
-[A command-showing rule (this is the new print text to the input prompt rule):
+A command-showing rule (this is the new print text to the input prompt rule):
 	now echoed already is true;
-	say "[input-style-for-glulx][Glulx replacement command][roman type][paragraph break]".]
+	say "[input-style-for-glulx][Glulx replacement command][roman type][paragraph break]".
 
 To say input-style-for-Glulx:
 	(- glk_set_style(style_Input); -)
 
-[The new print text to the input prompt rule is listed instead of the print text to the input prompt rule in the command-showing rules.]
+The new print text to the input prompt rule is listed instead of the print text to the input prompt rule in the command-showing rules.
 
-[Include (-
+Include (-
 
 [ VM_KeyChar win nostat done res ix jx ch;
 	jx = ch; ! squash compiler warnings
@@ -186,6 +186,9 @@ To say input-style-for-Glulx:
   .KCPContinue;
 	return res;
 ];
+-) replacing "VM_KeyChar".
+
+Include (-
 
 [ VM_KeyDelay tenths  key done ix;
 	glk_request_char_event(gg_mainwin);
@@ -206,6 +209,9 @@ To say input-style-for-Glulx:
 	glk_request_timer_events(0);
 	return key;
 ];
+-) replacing "VM_KeyDelay".
+
+Include (-
 
 [ VM_ReadKeyboard  a_buffer a_table done ix;
 	if (gg_commandstr ~= 0 && gg_command_reading ~= false) {
@@ -275,7 +281,7 @@ To say input-style-for-Glulx:
 	#endif; ! ECHO_COMMANDS
 ];
 
--) replacing "Keyboard Input".]
+-) replacing "VM_ReadKeyboard".
 
 Section 2 - Event handling
 
