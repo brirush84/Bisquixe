@@ -1,4 +1,4 @@
-Simple Multimedia Effects by Mathbrush begins here.
+Version 3 of Simple Multimedia Effects by Mathbrush begins here.
 
 [Significant chunks of code were first written by Petter Sjölund.]
 
@@ -67,7 +67,8 @@ To import-google-fonts (Temp - a text):
 	
 To upload-audio (Temp - a text) with internal name (Temp1 - a sound name):
 	let tempid be the Glulx resource ID of Temp1;
-	add-audio Temp with id tempid;
+	let tempname be "[temp].mp3";
+	add-audio tempname with id tempid;
 
 To add-audio (Temp - a text) with id (Temp1 - a number) :
 	(-
