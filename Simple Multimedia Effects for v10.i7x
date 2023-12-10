@@ -15,6 +15,7 @@ Css-value is some text that varies.
 Css-element is ".WindowFrame".
 Css-property is "background-color".
 Css-value is "yellow".
+
 Include (-
 	[ glk_set_css_fast _vararg_count;
 	  @glk 5377 _vararg_count 0;
@@ -28,6 +29,16 @@ Include (-
 
 	[ glk_any_style _vararg_count;
 	  @glk 5378 _vararg_count 0;
+	  return 0;
+	];
+
+	[ glk_import_google_fonts _vararg_count;
+	  @glk 5380 _vararg_count 0;
+	  return 0;
+	];
+
+	[ glk_add_audio _vararg_count;
+	  @glk 5381 _vararg_count 0;
 	  return 0;
 	];
 -)
@@ -47,7 +58,24 @@ To css-set-slow (Temp - a text):
 	}
 	-)
 
+To import-google-fonts (Temp - a text):
+	(-
+	if(glk_gestalt(5376, 0)){
+	glk_import_google_fonts(Glulx_ChangeAnyToCString(TEXT_TY_Say, {Temp}));
+	}
+	-)
 	
+To upload-audio (Temp - a text) with internal name (Temp1 - a sound name):
+	let tempid be the Glulx resource ID of Temp1;
+	add-audio Temp with id tempid;
+
+To add-audio (Temp - a text) with id (Temp1 - a number) :
+	(-
+	if(glk_gestalt(5376, 0)){
+	glk_add_audio(Glulx_ChangeAnyToCString(TEXT_TY_Say, {Temp}), {Temp1});
+	}
+	-)
+
 Part 2 - Arbitrary styling
 
 Section 1 - Class naming

@@ -16,28 +16,66 @@ Css-element is ".WindowFrame".
 Css-property is "background-color".
 Css-value is "yellow".
 
+Include (-
+	[ glk_set_css_fast _vararg_count;
+	  @glk 5377 _vararg_count 0;
+	  return 0;
+	];
+	
+	[ glk_set_css_slow _vararg_count;
+	  @glk 5379 _vararg_count 0;
+	  return 0;
+	];
+
+	[ glk_any_style _vararg_count;
+	  @glk 5378 _vararg_count 0;
+	  return 0;
+	];
+
+	[ glk_import_google_fonts _vararg_count;
+	  @glk 5380 _vararg_count 0;
+	  return 0;
+	];
+
+	[ glk_add_audio _vararg_count;
+	  @glk 5381 _vararg_count 0;
+	  return 0;
+	];
+-)
+
+
 To css-set-fast (Temp - a text):
 	(-
 	if(glk_gestalt(5376, 0)){
-	glk($1501, Glulx_ChangeAnyToCString(TEXT_TY_Say, {Temp}));
+	glk_set_css_fast(Glulx_ChangeAnyToCString(TEXT_TY_Say, {Temp}));
 	}
 	-)
 
 To css-set-slow (Temp - a text):
 	(-
 	if(glk_gestalt(5376, 0)){
-	glk($1503, Glulx_ChangeAnyToCString(TEXT_TY_Say, {Temp}));
+	glk_set_css_slow(Glulx_ChangeAnyToCString(TEXT_TY_Say, {Temp}));
 	}
 	-)
 
-To add-bufferline-class (Temp - a text):
+To import-google-fonts (Temp - a text):
 	(-
 	if(glk_gestalt(5376, 0)){
-	glk($1504, Glulx_ChangeAnyToCString(TEXT_TY_Say, {Temp}));
+	glk_import_google_fonts(Glulx_ChangeAnyToCString(TEXT_TY_Say, {Temp}));
+	}
+	-)
+	
+To upload-audio (Temp - a text) with internal name (Temp1 - a sound name):
+	let tempid be the Glulx resource ID of Temp1;
+	add-audio Temp with id tempid;
+
+To add-audio (Temp - a text) with id (Temp1 - a number) :
+	(-
+	if(glk_gestalt(5376, 0)){
+	glk_add_audio(Glulx_ChangeAnyToCString(TEXT_TY_Say, {Temp}), {Temp1});
 	}
 	-)
 
-	
 Part 2 - Arbitrary styling
 
 Section 1 - Class naming
@@ -46,7 +84,7 @@ To set-any-class (Temp - a text):
 	(- 
 	
 	if(glk_gestalt(5376, 0)){
-	glk($1502, Glulx_ChangeAnyToCString(TEXT_TY_Say, {Temp}),style_counter);
+	glk_any_style(Glulx_ChangeAnyToCString(TEXT_TY_Say, {Temp}),style_counter);
 	style_counter++;
 	}	
 	-)
@@ -60,7 +98,7 @@ To reset-style:
 
 Book 2 - Links
 
-Include Glulx Entry Points by Emily Short.
+Include version 10/140425 of Glulx Entry Points  by Emily Short.
 
 Section 1 - Initiation of links
 
