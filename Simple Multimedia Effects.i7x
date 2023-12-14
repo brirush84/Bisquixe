@@ -1,4 +1,4 @@
-Version 3 of Simple Multimedia Effects by Mathbrush begins here.
+Version 5 of Simple Multimedia Effects by Mathbrush begins here.
 
 [Significant chunks of code were first written by Petter Sjölund.]
 
@@ -41,6 +41,11 @@ Include (-
 	  @glk 5381 _vararg_count 0;
 	  return 0;
 	];
+
+	[ glk_add_image _vararg_count;
+	  @glk 5382 _vararg_count 0;
+	  return 0;
+	];
 -)
 
 
@@ -77,6 +82,13 @@ To add-audio (Temp - a text) with id (Temp1 - a number) :
 	}
 	-)
 
+To add-image (Temp - a text) with alttext (tempalt - a text) with id (Temp1 - a number) with width (Temp2 - a number) with height (Temp3 - a number) :
+	(-
+	if(glk_gestalt(5376, 0)){
+	glk_add_image({Temp1},Glulx_ChangeAnyToCString(TEXT_TY_Say, {Temp}),Glulx_ChangeAnyToCString(TEXT_TY_Say, {TempAlt}), {Temp2},{Temp3});
+	}
+	-)
+	
 Part 2 - Arbitrary styling
 
 Section 1 - Class naming
