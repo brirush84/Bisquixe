@@ -1,4 +1,4 @@
-Version 5 of Simple Multimedia Effects for v10 by Mathbrush begins here.
+Version 6 of Simple Multimedia Effects for v10 by Mathbrush begins here.
 
 [Significant chunks of code were first written by Petter Sjölund.]
 
@@ -44,6 +44,11 @@ Include (-
 
 	[ glk_add_image _vararg_count;
 	  @glk 5382 _vararg_count 0;
+	  return 0;
+	];
+
+	[ glk_internal_page _vararg_count;
+	  @glk 5383 _vararg_count 0;
 	  return 0;
 	];
 -)
@@ -388,5 +393,13 @@ A hyperlink processing rule (this is the default command replacement by hyperlin
 	now the glulx replacement command is entry (current hyperlink ID) of the hyperlink list;
 	rule succeeds.
 
+Section 6 - Linking to internal pages
 
+To link-page (Temp - a text) with tabOption (newTab - a number):
+	(-
+	if(glk_gestalt(5376, 0)){
+	glk_internal_page(Glulx_ChangeAnyToCString(TEXT_TY_Say, {Temp}), {newTab});
+	}
+	-)
+	
 Simple Multimedia Effects for v10 ends here.
